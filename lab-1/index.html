@@ -7,13 +7,24 @@
 
 </head>
 <body>
-    <input id="liczba1" type="text">
-    <input id="liczba2" type="text">
-    <input id="liczba3" type="text">
-    <input id="liczba4" type="text">
-    <div id="wynik">
-        <span id="suma">Suma: </span><br>
-        <span id="srednia">Srednia: </span><br>
+    <div id="inputContainer">
+        <div class="inputRow">
+            <input class="num" type="text">
+            <button class="deleteInput">Delete</button>
+        </div>
+        <div class="inputRow">
+            <input class="num" type="text">
+            <button class="deleteInput">Delete</button>
+        </div>
+        <div class="inputRow">
+            <input class="num" type="text">
+            <button class="deleteInput">Delete</button>
+        </div>
+    </div>
+    <button id="addInput">Add input field</button>
+    <div id="result">
+        <span id="sum">Sum: </span><br>
+        <span id="avg">Average: </span><br>
         <span id="min">Min: </span><br>
         <span id="max">Max: </span>
     </div>

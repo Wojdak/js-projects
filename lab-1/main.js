@@ -1,23 +1,63 @@
-const wynikiPojemnik = document.querySelector('#wynik')
+const wynikiContainer = document.querySelector('#result')
+const inputsContainer = document.querySelector('#inputContainer')
+const addInputButton = document.querySelector('#addInput')
+let deleteInputButtons = document.querySelectorAll('.deleteInput')
+let counter = 0
 
-const inputs = document.querySelectorAll('input');
 
-inputs.forEach(input => {
-    input.addEventListener('input', updateResults);
-});
+addInputButton.addEventListener('click', addInputField)
+inputsContainer.addEventListener('input', updateResults)
 
-function updateResults() {
-    const num1 = Number(document.querySelector('#liczba1').value)
-    const num2 = Number(document.querySelector('#liczba2').value)
-    const num3 = Number(document.querySelector('#liczba3').value)
-    const num4 = Number(document.querySelector('#liczba4').value)
-    
-    const suma = num1+num2+num3+num4
+deleteInputButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', (e) => {
+        deleteInputField(e);
+    });
+})
 
-    document.querySelector('#suma').innerHTML= `Suma: ${suma}`
-    document.querySelector('#srednia').innerHTML=`Srednia: ${suma/4}`
-    document.querySelector('#min').innerHTML=`Mina: ${Math.min(num1,num2,num3,num4)}`
-    document.querySelector('#max').innerHTML=`Max: ${Math.max(num1,num2,num3,num4)}` 
+function addInputField() {
+    const newInputRow = document.createElement('div')
+    newInputRow.classList.add('inputRow')
+
+    const newInput = document.createElement('input')
+    newInput.type = 'text'
+
+    const deleteButton = document.createElement('button')
+    deleteButton.classList.add('deleteInput')
+    deleteButton.textContent = 'Delete'
+    deleteButton.addEventListener('click', (e) => {
+        deleteInputField(e);
+    });
+
+    newInputRow.appendChild(newInput)
+    newInputRow.appendChild(deleteButton)
+    inputsContainer.appendChild(newInputRow)
 }
 
-    
+function updateResults() {
+    const inputElements = inputsContainer.querySelectorAll('input')
+    let sum = 0
+    let min = Number.MAX_VALUE
+    let max = -Number.MAX_VALUE
+
+    inputElements.forEach(input => {
+        const num = Number(input.value)
+        sum += num
+        min = Math.min(min, num)
+        max = Math.max(max, num)
+        counter++
+    })
+
+    const avg = sum/counter
+
+    document.querySelector('#sum').innerHTML = `Sum: ${sum}`
+    document.querySelector('#avg').innerHTML = `Average: ${avg}`
+    document.querySelector('#min').innerHTML = `Min: ${min}`
+    document.querySelector('#max').innerHTML = `Max: ${max}`
+}
+
+function deleteInputField(e){
+    const clickedDeleteButton = e.target;
+    const inputRow = clickedDeleteButton.parentElement;
+    inputsContainer.removeChild(inputRow);
+    updateResults();
+}
