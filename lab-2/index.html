@@ -7,20 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="slider">
-        <div class="slides">
-        	<img src="https://picsum.photos/seed/car/600/400" alt="">
-        	<img src="http://picsum.photos/seed/city/600/400" alt="">
-        	<img src="http://picsum.photos/seed/dog/600/400" alt="">
-        	<img src="http://picsum.photos/seed/football/600/400" alt="">
-        	<img src="http://picsum.photos/seed/food/600/400" alt="">
+    <div class="slider-container">
+        <div class="slider-images">
+            <img class="slider-image" src="https://picsum.photos/seed/car/600/400" alt="">
+            <img class="slider-image" src="http://picsum.photos/seed/city/600/400" alt="">
+            <img class="slider-image" src="http://picsum.photos/seed/dog/600/400" alt="">
+            <img class="slider-image" src="http://picsum.photos/seed/football/600/400" alt="">
+            <img class="slider-image" src="http://picsum.photos/seed/food/600/400" alt="">
         </div>
-    </div>
-    <div class="buttons">
-        <button id="left">Left</button>
-        <button id="right">Right</button>
+        <button class="slider-button" id="prevButton">Previous</button>
+        <button class="slider-button" id="nextButton">Next</button>
+        <ul class="slider-dots">
+            <li class="slider-dot" onclick="goToSlide(0)"></li>
+            <li class="slider-dot" onclick="goToSlide(1)"></li>
+            <li class="slider-dot" onclick="goToSlide(2)"></li>
+            <li class="slider-dot" onclick="goToSlide(3)"></li>
+            <li class="slider-dot" onclick="goToSlide(4)"></li>
+        </ul>
     </div>
 
-    <script src="main.js" type="text/javascript"></script>
+    <script src="main.js"></script>
 </body>
 </html>

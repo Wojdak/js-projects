@@ -1,27 +1,51 @@
-const slides = document.querySelector('.slides');
-let translateValue = 0;
+let currentSlide = 0
+let autoSlideInterval
 
-const rightButton = document.querySelector('#right')
-const leftButton = document.querySelector('#left')
+document.querySelector("#prevButton").addEventListener("click", function () {
+    prevSlide()
+    resetAutoSlide()
+});
 
-rightButton.addEventListener('click', () => {
-    translateValue -= 600;
-})
+document.querySelector("#nextButton").addEventListener("click", function () {
+    nextSlide()
+    resetAutoSlide()
+});
 
-leftButton.addEventListener('click', () => {
-    translateValue+=600;
-})
+const images = document.querySelectorAll(".slider-image");
 
-function continueSliding() {
-    translateValue -= 1;
-
-    if (translateValue <= -2400) {
-        translateValue = 0;
-    } else if(translateValue >0) {
-        translateValue = 0;
+function showSlide(index) {
+    if (index >= images.length) {
+        currentSlide = 0
+    } else if (index < 0) {
+        currentSlide = images.length - 1
+    } else {
+        currentSlide = index
     }
 
-    slides.style.transform = `translateX(${translateValue}px)`;
+    const offset = -currentSlide * 600
+    
+    document.querySelector(".slider-images").style.transform = `translateX(${offset}px)`
 }
 
-let intervalRef = setInterval(continueSliding, 16);
+function nextSlide() {
+    showSlide(currentSlide + 1)
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1)
+}
+
+function goToSlide(index) {
+    currentSlide = index
+    offset = -index * 600
+    
+    showSlide(index)
+    resetAutoSlide() 
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval)
+    autoSlideInterval = setInterval(nextSlide, 2000)
+}
+
+resetAutoSlide();
