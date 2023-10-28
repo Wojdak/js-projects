@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drumkit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="audio-container">
+        <audio src="./sounds/boom.wav" controls id="s1"></audio>
+        <span>"Boom" - A</span>
+        
+        <audio src="./sounds/clap.wav" controls id="s2"></audio>
+        <span>"Clap" - S</span>
+        
+        <audio src="./sounds/hihat.wav" controls id="s3"></audio>
+        <span>"Hihat" - D</span>
+        
+        <audio src="./sounds/kick.wav" controls id="s4"></audio>
+        <span>"Kick" - F</span>
+        
+        <audio src="./sounds/ride.wav" controls id="s5"></audio>
+        <span>"Ride" - G</span>
+        
+        <audio src="./sounds/snare.wav" controls id="s6"></audio>
+        <span>"Snare" - H</span>
+        
+        <audio src="./sounds/tink.wav" controls id="s7"></audio>
+        <span>"Tink" - J</span>
+    </div>
+    
+    <div id="recording-buttons-container">
+        <button id="record-channel1">Record Channel 1</button>
+        <button id="record-channel2">Record Channel 2</button>
+        <button id="record-channel3">Record Channel 3</button>
+        <button id="record-channel4">Record Channel 4</button><br><br>
+        <button id="stop-recording">Stop Recording</button>
+    </div>
+
+    <div id="play-channels-container">
+        <button id="play-channel1">Play Channel 1</button>
+        <input type="checkbox" id="channel-checkbox1" checked>
+        <label for="channel-checkbox1">Include Channel 1</label><br>
+
+        <button id="play-channel2">Play Channel 2</button>
+        <input type="checkbox" id="channel-checkbox2" checked>
+        <label for="channel-checkbox2">Include Channel 2</label><br>
+
+        <button id="play-channel3">Play Channel 3</button>
+        <input type="checkbox" id="channel-checkbox3" checked>
+        <label for="channel-checkbox3">Include Channel 3</label><br>
+
+        <button id="play-channel4">Play Channel 4</button>
+        <input type="checkbox" id="channel-checkbox4" checked>
+        <label for="channel-checkbox4">Include Channel 4</label><br><br>
+        
+        <button id="play-all-channels">Play Selected Channels</button>
+    </div>
+    
+    <div id="metronome-container">
+        <label for="bpm-input">BPM:</label>
+        <input type="number" id="bpm-input" value="120" min="1" max="300"><br>
+        <button id="toggle-metronome">Toggle Metronome</button>
+    </div>
+
+    <script src="drumkit.js"></script>
+    <script src="metronome.js"></script>
+</body>
+</html>

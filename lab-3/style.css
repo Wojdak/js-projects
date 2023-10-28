@@ -1,0 +1,8 @@
+#audio-container{
+    display:flex;
+    flex-direction: column;
+}
+
+div {
+    margin-bottom: 35px;
+}
