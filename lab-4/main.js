@@ -11,7 +11,8 @@ function addNote() {
 
     const note = { title, content, color, pin, date }
 
-    let notes = JSON.parse(localStorage.getItem("notes"))
+    let notes = JSON.parse(localStorage.getItem("notes")) || []
+
     notes.push(note)
     localStorage.setItem("notes", JSON.stringify(notes))
 
@@ -22,7 +23,7 @@ function displayNotes() {
     const noteList = document.getElementById("note-list")
     noteList.innerHTML = ""
 
-    let notes = JSON.parse(localStorage.getItem("notes"))
+    let notes = JSON.parse(localStorage.getItem("notes")) || [] //Pusty array jezeli local storage jest pusty
 
     const pinnedNotes = notes.filter(note => note.pin)
     const unpinnedNotes = notes.filter(note => !note.pin)
@@ -37,6 +38,7 @@ function displayNotes() {
         noteList.appendChild(noteElement)
     })
 }
+
 
 function createNoteElement(note, index) {
     const noteElement = document.createElement("div")

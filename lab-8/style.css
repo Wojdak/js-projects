@@ -1,0 +1,32 @@
+.input-form {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.input-form label {
+    font-size: 20px;
+}
+
+.input-form input {
+    margin: 7px 0;
+}
+
+.input-form button {
+    font-size: 15px;
+}
+
+#weather-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.weather-block {
+    margin: 0 5px;
+    background-color: rgb(230, 230, 226);
+    text-align: center;
+}
+
+.weather-actions {
+    padding-bottom: 10px;
+}
