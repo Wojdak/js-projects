@@ -1,6 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     displayWeather()
+    setInterval(updateWeather, 300000)
 })
+
+
+async function updateWeather() {
+    let weatherListData = JSON.parse(localStorage.getItem("weatherData")) || []
+
+    // Aktualizacja danych dla każdego miasta
+    for (let i = 0; i < weatherListData.length; i++) {
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weatherListData[i].name}&appid=a5913bf8ca2ef4f3d8bf2e3bbf49cb82`)
+        let updatedData = await response.json()
+        weatherListData[i] = updatedData
+    }
+
+    localStorage.setItem("weatherData", JSON.stringify(weatherListData))
+    displayWeather()
+}
 
 async function GetWeatherData(){
     const city = document.getElementById("city-input").value
