@@ -1,5 +1,6 @@
 let currentSlide = 0
 let autoSlideInterval
+let isAutoSlidePlaying = true
 
 document.querySelector("#prevButton").addEventListener("click", function () {
     prevSlide()
@@ -11,7 +12,11 @@ document.querySelector("#nextButton").addEventListener("click", function () {
     resetAutoSlide()
 });
 
-const images = document.querySelectorAll(".slider-image");
+document.querySelector("#pauseButton").addEventListener("click", function () {
+    toggleAutoSlide()
+});
+
+const images = document.querySelectorAll(".slider-slide");
 
 function showSlide(index) {
     if (index >= images.length) {
@@ -24,7 +29,7 @@ function showSlide(index) {
 
     const offset = -currentSlide * 600
     
-    document.querySelector(".slider-images").style.transform = `translateX(${offset}px)`
+    document.querySelector(".slider-elements").style.transform = `translateX(${offset}px)`
 }
 
 function nextSlide() {
@@ -43,9 +48,23 @@ function goToSlide(index) {
     resetAutoSlide() 
 }
 
+function toggleAutoSlide() {
+    isAutoSlidePlaying = !isAutoSlidePlaying;
+    resetAutoSlide();
+    updateButtonLabel();
+}
+
+function updateButtonLabel() {
+    const pauseButton = document.querySelector("#pauseButton");
+    pauseButton.innerHTML = isAutoSlidePlaying ? "Pause" : "Start";
+}
+
 function resetAutoSlide() {
-    clearInterval(autoSlideInterval)
-    autoSlideInterval = setInterval(nextSlide, 2000)
+    clearInterval(autoSlideInterval);
+    if (isAutoSlidePlaying) {
+        autoSlideInterval = setInterval(nextSlide, 2000);
+    }
 }
 
 resetAutoSlide();
+

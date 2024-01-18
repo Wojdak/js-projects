@@ -8,15 +8,28 @@
 </head>
 <body>
     <div class="slider-container">
-        <div class="slider-images">
-            <img class="slider-image" src="https://picsum.photos/seed/car/600/400" alt="">
-            <img class="slider-image" src="http://picsum.photos/seed/city/600/400" alt="">
-            <img class="slider-image" src="http://picsum.photos/seed/dog/600/400" alt="">
-            <img class="slider-image" src="http://picsum.photos/seed/football/600/400" alt="">
-            <img class="slider-image" src="http://picsum.photos/seed/food/600/400" alt="">
+        <div class="slider-elements">
+            <div class="slider-slide">
+                <img src="https://picsum.photos/seed/car/600/400" alt="">
+            </div>
+            <div class="slider-slide">
+                <h3>This is a sample text</h3>
+            </div>
+            <div class="slider-slide">
+                <iframe width="600" height="400" src="https://www.youtube.com/embed/xvFZjo5PgG0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="slider-slide">
+                <img src="http://picsum.photos/seed/football/600/400" alt="">
+            </div>
+            <div class="slider-slide">
+                <img src="http://picsum.photos/seed/food/600/400" alt="">
+            </div>
         </div>
-        <button class="slider-button" id="prevButton">Previous</button>
-        <button class="slider-button" id="nextButton">Next</button>
+        <div class="slider-controls">
+            <button class="slider-button" id="prevButton">Previous</button>
+            <button class="slider-button" id="pauseButton">Pause</button>
+            <button class="slider-button" id="nextButton">Next</button>
+        </div>
         <ul class="slider-dots">
             <li class="slider-dot" onclick="goToSlide(0)"></li>
             <li class="slider-dot" onclick="goToSlide(1)"></li>

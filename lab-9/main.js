@@ -13,6 +13,15 @@ startButton.addEventListener('click', startSimulation)
 
 resetButton.addEventListener('click', resetSimulation)
 
+function createRandomBall() {
+  return {
+    x: Math.random() * canvas.width, // Losowa pozycja startowa x w zakresie od 0 do szerokości canvasu
+    y: Math.random() * canvas.height, // Losowa pozycja startowa y w zakresie od 0 do wysokości canvasu
+    dx: Math.random() * 2 - 1, // Losowa prędkośc na osi x w zakresie od -1 do 1
+    dy: Math.random() * 2 - 1  // Losowa prędkośc na osi y w zakresie od -1 do 1
+  };
+}
+
 function startSimulation() {
     resetSimulation()
     animate()
@@ -23,12 +32,7 @@ function resetSimulation() {
     balls = []
 
     for (let i = 0; i < 40; i++) {
-      balls.push({
-        x: Math.random() * canvas.width, // Losowa pozycja startowa x w zakresie od 0 do szerokości canvasu
-        y: Math.random() * canvas.height, // Losowa pozycja startowa y w zakresie od 0 do wysokości canvasu
-        dx: Math.random() * 2 - 1, // Losowa prędkośc na osi x w zakresie od -1 do 1
-        dy: Math.random() * 2 - 1  // Losowa prędkośc na osi y w zakresie od -1 do 1
-      });
+      balls.push(createRandomBall());
     }
 
     draw()
@@ -86,4 +90,21 @@ function drawLines() {
     }
   }
   
-  resetSimulation()
+function handleCanvasClick(event) {
+  const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+  const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+    
+    for (let i = 0; i < balls.length; i++) {
+      const distance = Math.sqrt((mouseX - balls[i].x)**2 + (mouseY - balls[i].y)**2); // Fancy matematyka do obliczenia dystansu miedzy myszka i srodkiem kulki
+
+      if (distance < ballRadius) {
+        // Kliknięcie w kulkę - usuń i dodaj dwie nowe
+        balls.splice(i, 1);
+        balls.push(createRandomBall());
+        balls.push(createRandomBall());
+        break;
+    }
+  }
+}
+
+resetSimulation()
