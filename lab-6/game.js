@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 const ballRadius = 15;
 const holeRadius = 20;
 const ballSpeed = 0.2;
-const gameTime = 30 * 1000;
+const gameTime = 60 * 1000;
 
 canvas.width = 900;
 canvas.height = 600;
